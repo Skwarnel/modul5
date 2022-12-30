@@ -4,7 +4,6 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
-@Component
 public class FileCustomerLogger implements CustomerLogger {
     String fileName;
 
