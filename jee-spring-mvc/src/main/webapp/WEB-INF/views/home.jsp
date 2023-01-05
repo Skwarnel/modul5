@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%--
   Created by IntelliJ IDEA.
   User: griegoriens
@@ -19,6 +20,9 @@
 <body>
 
 <h1>Witaj w widoku</h1>
+<h2>
+    It is: <c:out value="${actualTimeString}"/>
+</h2>
 
 </body>
 </html>

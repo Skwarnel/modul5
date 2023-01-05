@@ -36,5 +36,4 @@ public class FreeTimeController {
             return "Po pracy";
         }
     }
-
 }

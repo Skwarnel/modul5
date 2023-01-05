@@ -1,6 +1,7 @@
 package pl.coderslab.controller.session;
 
 public class CartItem {
+
     private int quantity;
     private Product product;
 
@@ -13,16 +14,16 @@ public class CartItem {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
     public Product getProduct() {
         return product;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public double itemAmount() {
+        return quantity * product.getPrice();
     }
 
     @Override

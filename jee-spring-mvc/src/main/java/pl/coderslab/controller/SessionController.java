@@ -1,6 +1,5 @@
 package pl.coderslab.controller;
 
-import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,8 +20,8 @@ public class SessionController {
         LocalDateTime loginStartDate = (LocalDateTime) session.getAttribute("loginStart");
         if (loginStartDate == null) {
             model.addAttribute("loginStart", LocalDateTime.now());
-            return "Ustawiono wartość";
+            return "Ustawiono wartosc";
         }
-        return loginStartDate.format(DateTimeFormatter.ISO_DATE);
+        return loginStartDate.format(DateTimeFormatter.ISO_DATE_TIME);
     }
 }

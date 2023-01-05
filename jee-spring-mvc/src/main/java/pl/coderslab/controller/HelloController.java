@@ -2,10 +2,7 @@ package pl.coderslab.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalTime;
 
@@ -23,6 +20,8 @@ public class HelloController {
             model.addAttribute("color", "white");
             model.addAttribute("backgroundColor", "black");
         }
+        String actualTimeString = actualTime.toString();
+        model.addAttribute(actualTimeString);
         return "home";
     }
 
@@ -37,5 +36,12 @@ public class HelloController {
     public String helloWorld() {
         return "Hello world";
     }
+
+    @GetMapping("/userAgn")
+    @ResponseBody
+    public String userAgent(@RequestHeader("user-agent") String userAgent) {
+        return "user-agent = "  + userAgent;
+    }
+
 
 }
