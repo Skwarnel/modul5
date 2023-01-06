@@ -9,16 +9,12 @@
         <module name="jee-spring-java" />
         <module name="homework_01" />
         <module name="java" />
+        <module name="homework_02" />
         <module name="jee-spring-auto" />
         <module name="jee-spring-mvc" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="homework_01" target="11" />
-      <module name="java" target="11" />
-      <module name="jee-spring-auto" target="11" />
-      <module name="jee-spring-java" target="11" />
-      <module name="jee-spring-mvc" target="11" />
       <module name="jee-spring-xml" target="11" />
     </bytecodeTargetLevel>
   </component>

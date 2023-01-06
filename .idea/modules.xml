@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/homework_01/homework_01.iml" filepath="$PROJECT_DIR$/homework_01/homework_01.iml" />
-      <module fileurl="file://$PROJECT_DIR$/java/java.iml" filepath="$PROJECT_DIR$/java/java.iml" />
-      <module fileurl="file://$PROJECT_DIR$/jee-spring-auto/jee-spring-auto.iml" filepath="$PROJECT_DIR$/jee-spring-auto/jee-spring-auto.iml" />
-      <module fileurl="file://$PROJECT_DIR$/jee-spring-java/jee-spring-java.iml" filepath="$PROJECT_DIR$/jee-spring-java/jee-spring-java.iml" />
-      <module fileurl="file://$PROJECT_DIR$/jee-spring-mvc/jee-spring-mvc.iml" filepath="$PROJECT_DIR$/jee-spring-mvc/jee-spring-mvc.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/module5.iml" filepath="$PROJECT_DIR$/.idea/module5.iml" />
     </modules>
   </component>
