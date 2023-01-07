@@ -1,0 +1,17 @@
+1, Jan Kowalski
+2, Scarlet O'Hara
+3, Cambridge Comwell
+4, Astrid Lindgren
+5, Cathrine Hupburn
+6, Margareth Hacker
+7, Taylor Smith
+8, Louis Armstrong
+9, Tiny Pellotti
+17, Jan Wiśniewski
+10, Andrzej Bohatyrowicz
+11, Stanisław Wokulski
+12, Marian Dębski
+13, Kaori Tanaka
+14, Lily Beth
+15, Joachim Lelewel
+16, Juliusz Lea
