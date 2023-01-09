@@ -5,8 +5,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 
 @Controller
@@ -33,7 +36,7 @@ public class CartController {
     @GetMapping("/addToCart")
     public String addToCart(@RequestParam("id") long id, @RequestParam("quantity") int quantity) {
         logger.debug("running add to cart with given params, id: {}, quantity: {}", id, quantity);
-        if(cart.hasProductWithId(id)) {
+        if (cart.hasProductWithId(id)) {
             logger.debug("there is already product with given id, updating");
             cart.updateQuantity(id, quantity);
             return "quantityUpdated";
@@ -50,11 +53,35 @@ public class CartController {
         int cartSize = cart.getCartItems().size();
         int totalQnt = cart.totalQuantity();
         double amountToPay = cart.totalAmount();
+        List<CartItem> cartItemList = cart.getCartItems();
+
         model.addAttribute("cartSize", cartSize);
         model.addAttribute("totalQnt", totalQnt);
         model.addAttribute("amountToPay", amountToPay);
-
+        model.addAttribute("cartItemList", cartItemList);
+        model.addAttribute("id_1_qnt", getQuantityById(1));
+        model.addAttribute("id_2_qnt", getQuantityById(2));
+        model.addAttribute("id_3_qnt", getQuantityById(3));
         return "cart";
     }
 
+    @GetMapping("/getQuantityById/{id}")
+    @ResponseBody
+    public String getQuantityById(@PathVariable long id) {
+        long qnt = cart.getQuantityById(id);
+        String value = String.valueOf(qnt);
+        return value;
+    }
+
+    @GetMapping("/addOne")
+    public String addOne(@RequestParam long id) {
+        cart.updateQuantity(id, 1);
+        return "addToCart";
+    }
+
+    @GetMapping("/removeOne")
+    public String removeOne(@RequestParam long id) {
+        cart.updateQuantity(id, -1);
+        return "addToCart";
+    }
 }

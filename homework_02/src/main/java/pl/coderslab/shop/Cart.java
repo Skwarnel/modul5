@@ -1,5 +1,7 @@
 package pl.coderslab.shop;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
@@ -12,7 +14,7 @@ import java.util.List;
 @Scope(value = WebApplicationContext.SCOPE_SESSION,
         proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class Cart {
-
+    private final static Logger logger = LoggerFactory.getLogger(Cart.class);
     private List<CartItem> cartItems = new ArrayList<>();
 
     public List<CartItem> getCartItems() {
@@ -40,6 +42,17 @@ public class Cart {
                 .map(CartItem::getProduct)
                 .anyMatch(p -> p.getId() == id);
     }
+
+    public long getQuantityById(long id) {
+        int quantity = -1;
+        for (CartItem c : cartItems
+          ) {
+            if (c.getProduct().getId() == id) {
+                quantity = c.getQuantity();
+            }
+        }
+        return quantity;
+        }
 
     public void updateQuantity(long id, int quantity) {
         cartItems.stream()
