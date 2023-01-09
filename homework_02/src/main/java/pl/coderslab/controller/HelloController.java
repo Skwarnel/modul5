@@ -1,10 +1,12 @@
 package pl.coderslab.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
-import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Random;
@@ -12,10 +14,12 @@ import java.util.Scanner;
 
 @Controller
 public class HelloController {
+    private static final Logger logger = LoggerFactory.getLogger(HelloController.class);
+
     @RequestMapping("/workers")
-    public String workersAction(HttpServletRequest req) {
+    public String workersAction(Model mod) {
         Random random = new Random();
-        String  num = "";
+        String num = "";
         int numInt = -1;
         String rowNo = "";
         String firstName = "";
@@ -41,10 +45,22 @@ public class HelloController {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        req.setAttribute("num", rowNo);
-        req.setAttribute("first", firstName);
-        req.setAttribute("last", lastName);
-        req.setAttribute("number", number);
+        mod.addAttribute("num", rowNo);
+        mod.addAttribute("first", firstName);
+        mod.addAttribute("last", lastName);
+        mod.addAttribute("number", number);
+        mod.asMap().forEach((k, v) -> logger.info(k + ": " + v));
         return "workers";
+    }
+
+    @RequestMapping("/modelValues")
+    @ResponseBody
+    public String getAllFromMap(Model model) {
+        model.addAttribute("num", "rowNo");
+        model.addAttribute("first", "firstName");
+        model.addAttribute("last", "lastName");
+        model.addAttribute("number", 1);
+        model.asMap().forEach((k, v) -> logger.info(k + ": " + v));
+        return model.asMap().toString();
     }
 }

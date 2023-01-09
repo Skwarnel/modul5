@@ -1,8 +1,9 @@
-package pl.coderslab.controller.session;
+package pl.coderslab.shop;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,8 +30,7 @@ public class CartController {
         return "addtocart";
     }*/
 
-    @GetMapping("/addtocart")
-    @ResponseBody
+    @GetMapping("/addToCart")
     public String addToCart(@RequestParam("id") long id, @RequestParam("quantity") int quantity) {
         logger.debug("running add to cart with given params, id: {}, quantity: {}", id, quantity);
         if(cart.hasProductWithId(id)) {
@@ -42,22 +42,17 @@ public class CartController {
         CartItem cartItem = new CartItem(quantity, product);
         logger.debug("This is new product in cart, adding new cart item: {}", cartItem);
         cart.addToCart(cartItem);
-        return "addtocart";
+        return "addToCart";
     }
 
     @GetMapping("/cart")
-    @ResponseBody
-    public String showCart() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("W koszyku jest: ")
-                .append(cart.getCartItems().size())
-                .append(" pozycji. \n");
-        sb.append("W koszyku jest: ")
-                .append(cart.totalQuantity())
-                .append(" produktów. \n");
-        sb.append("Wartosc koszyka to: ")
-                .append(cart.totalAmount())
-                .append(" .\n");
+    public String showCart(Model model) {
+        int cartSize = cart.getCartItems().size();
+        int totalQnt = cart.totalQuantity();
+        double amountToPay = cart.totalAmount();
+        model.addAttribute("cartSize", cartSize);
+        model.addAttribute("totalQnt", totalQnt);
+        model.addAttribute("amountToPay", amountToPay);
 
         return "cart";
     }
