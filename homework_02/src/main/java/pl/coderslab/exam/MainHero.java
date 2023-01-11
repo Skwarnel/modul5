@@ -2,12 +2,10 @@ package pl.coderslab.exam;
 
 import java.time.LocalDate;
 import java.util.*;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class MainHero {
     public static void main(String[] args) {
-        List<Hero> heroList = new ArrayList<>();
         HeroComponent heroComponent = new HeroComponent();
         Hero hero1 = new Hero();
         Hero hero2 = new Hero();
@@ -49,14 +47,14 @@ public class MainHero {
         System.out.println(hero2.compareTo(hero1));
         System.out.println("================");
 
-        heroList.add(hero1);
-        heroList.add(hero2);
-        heroList.add(hero3);
-        heroList.add(hero4);
-        heroList.add(hero5);
-        heroList.add(hero6);
+        heroComponent.addHero(hero1);
+        heroComponent.addHero(hero2);
+        heroComponent.addHero(hero3);
+        heroComponent.addHero(hero4);
+        heroComponent.addHero(hero5);
+        heroComponent.addHero(hero6);
 
-        heroList.stream()
+        heroComponent.heroList.stream()
                 .filter(u -> u.getName().length() > 2)
                 .filter(u -> Objects.nonNull(u.getPower()))
                 .filter(u -> u.getName().charAt(1) == 'u' && u.getPower() < 1)
@@ -65,34 +63,33 @@ public class MainHero {
 
         System.out.println("================");
 
-        heroList.stream()
-                .sorted(Hero::compareTo)
+        heroComponent.heroList.stream()                .sorted(Hero::compareTo)
                 .map(k -> k.getName())
                 .forEach(u -> System.out.println(u));
 
         System.out.println("================");
 
-        heroList.stream()
+        heroComponent.heroList.stream()
                 .map(u -> u.getName().charAt(0))
                 .forEach(u -> System.out.println(u));
 
         System.out.println("================");
 
-        heroList.stream()
+        heroComponent.heroList.stream()
                 .map(k -> k.getName())
                 .map(w -> w.toUpperCase())
                 .forEach(z -> System.out.println(z));
 
         System.out.println("================");
 
-        String toCheck = heroList.stream()
+        String toCheck = heroComponent.heroList.stream()
                 .map(k -> k.getName())
                 .collect(Collectors.joining("-"));
 
         System.out.println(toCheck);
         System.out.println("\nFINAL SOLUTION\n");
 
-        String result = heroList.stream()
+        String result = heroComponent.heroList.stream()
                 .filter(u -> u.getName().length() > 2)
                 .filter(u -> Objects.nonNull(u.getPower()))
                 .filter(u -> u.getName().charAt(1) == 'u' && u.getPower() > 5)
@@ -104,7 +101,6 @@ public class MainHero {
         System.out.println(result);
         System.out.println("================");
 
-        heroComponent.setHeroList(heroList);
         System.out.println(heroComponent.findHeroByPhoneNumber("555"));
         System.out.println(heroComponent.findHeroByPhoneNumber("5123"));
         System.out.println(heroComponent.findHeroByPhoneNumber("765-D"));

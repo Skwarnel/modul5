@@ -1,9 +1,13 @@
 package pl.coderslab.exam;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
+@Component
 public class Hero implements Comparable<Hero>, Serializable {
     private String name;
     private Long power;
