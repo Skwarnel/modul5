@@ -51,4 +51,13 @@ public class Hero implements Comparable<Hero>, Serializable {
         this.phoneNumber = phoneNumber;
     }
 
+    @Override
+    public String toString() {
+        return "Hero{" +
+                "name='" + name + '\'' +
+                ", power=" + power +
+                ", dateOfBirth=" + dateOfBirth +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
+    }
 }
