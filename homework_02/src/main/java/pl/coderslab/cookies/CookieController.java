@@ -32,17 +32,17 @@ public class CookieController {
 
     @GetMapping("/all-cookies")
     public String showCookies(HttpServletRequest req) {
-        Cookie c1 = WebUtils.getCookie(req, "user");
-        Cookie c2 = WebUtils.getCookie(req, "uid");
-        Cookie c3 = WebUtils.getCookie(req, "IDE");
-        Cookie c4 = WebUtils.getCookie(req, "myCookie");
+//        Cookie c1 = WebUtils.getCookie(req, "user");
+//        Cookie c2 = WebUtils.getCookie(req, "uid");
+//        Cookie c3 = WebUtils.getCookie(req, "IDE");
+//        Cookie c4 = WebUtils.getCookie(req, "myCookie");
 
+        Cookie[] cookiesArray = req.getCookies();
         List<Cookie> cookies = new ArrayList<>();
-
-        cookies.add(c1);
-        cookies.add(c2);
-        cookies.add(c3);
-        cookies.add(c4);
+        for (Cookie c :
+                cookiesArray) {
+            cookies.add(c);
+        }
 
         req.setAttribute("cookies", cookies);
         return "showCookies";

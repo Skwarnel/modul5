@@ -23,32 +23,32 @@ public class HeroComponent {
 
         hero1.setName("butman");
         hero1.setPhoneNumber("555");
-        hero1.setDateOfBirth(LocalDate.of(2020, 12, 10));
+        hero1.setDateOfBirth(LocalDate.of(1982, 12, 10));
         hero1.setPower(200L);
 
         hero2.setName("hurkules");
         hero2.setPhoneNumber("5123");
-        hero2.setDateOfBirth(LocalDate.of(2018, 10, 2));
+        hero2.setDateOfBirth(LocalDate.of(1099, 10, 2));
         hero2.setPower(500L);
 
         hero3.setName("suiderman");
         hero3.setPhoneNumber("765-D");
-        hero3.setDateOfBirth(LocalDate.of(2018, 10, 2));
+        hero3.setDateOfBirth(LocalDate.of(1999, 10, 2));
         hero3.setPower(2L);
 
         hero4.setName("guerro");
         hero4.setPhoneNumber("3");
-        hero4.setDateOfBirth(LocalDate.of(2018, 10, 2));
+        hero4.setDateOfBirth(LocalDate.of(2001, 10, 2));
         hero4.setPower(-10L);
 
         hero5.setName("tuzeusz");
         hero5.setPhoneNumber("123");
-        hero5.setDateOfBirth(LocalDate.of(2018, 10, 2));
+        hero5.setDateOfBirth(LocalDate.of(2013, 10, 2));
         hero5.setPower(300L);
 
-        hero6.setName("Bulzebub");
+        hero6.setName("Gabrilla");
         hero6.setPhoneNumber("1");
-        hero6.setDateOfBirth(LocalDate.of(2018, 10, 2));
+        hero6.setDateOfBirth(LocalDate.of(2015, 10, 2));
         hero6.setPower(59L);
 
         heroList.add(hero1);
